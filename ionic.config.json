@@ -1,0 +1,7 @@
+{
+  "name": "FitConnect-Demo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
