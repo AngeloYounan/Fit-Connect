@@ -7,7 +7,7 @@ pages:
   stage: deploy
   script:
     - npm run build
-    - npm run deploy
+    - npm run 
   artifacts:
     paths:
       # The folder that contains the files to be exposed at the Page URL
