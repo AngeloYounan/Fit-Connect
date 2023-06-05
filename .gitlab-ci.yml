@@ -47,3 +47,11 @@ deploy-job:      # This job runs in the deploy stage.
   script:
     - echo "Deploying application..."
     - echo "Application successfully deployed."
+
+
+    image: node:its
+# Functions that should be executed before the build script is run
+before_script:
+  - npm i -f
+  - ionic serve
+
