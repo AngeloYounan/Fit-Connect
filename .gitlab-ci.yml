@@ -4,6 +4,7 @@ image: node:latest
 before_script:
   - npm i -f
 pages:
+  stage: deploy
   script:
     - npm run build
     - npm run deploy
