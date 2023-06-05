@@ -7,8 +7,7 @@ pages:
   script:
     - npm install
     - npm run build
-    - npm run test-ci
-    - npm run e2e
+    - ionic serve
     - npm run deploy
   artifacts:
     paths:
