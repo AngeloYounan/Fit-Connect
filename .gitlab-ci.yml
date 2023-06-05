@@ -5,7 +5,11 @@ before_script:
   - npm i -f
 pages:
   script:
-    - npm i -f
+    - npm install
+    - npm run build
+    - npm run test-ci
+    - npm run e2e
+    - npm run deploy
   artifacts:
     paths:
       # The folder that contains the files to be exposed at the Page URL
