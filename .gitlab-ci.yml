@@ -6,7 +6,6 @@ before_script:
 pages:
   script:
     - npm run build
-    - ionic serve
     - npm run deploy
   artifacts:
     paths:
