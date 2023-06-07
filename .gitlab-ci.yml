@@ -1,18 +1,19 @@
 image: node:latest
 
-variables:
-  JEKYLL_ENV: production
-  LC_ALL: C.UTF-8
-
-before_script:
-  - npm install 
-
 pages:
+  cache:
+    paths:
+    - node_modules/
+
   stage: deploy
   script:
-  - npm run serve
+  - npm install -g @angular/cli
+  - npm install
+  - ng build --prod --base-href /fit-fonnect-demo/
+  - mkdir public
+  - mv prod/fit-fonnect-demo/* public/
   artifacts:
     paths:
     - public
-  rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  only:
+  - master
