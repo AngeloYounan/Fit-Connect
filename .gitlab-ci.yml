@@ -1,18 +1,22 @@
-# The Docker image that will be used to build your app
-image: node:latest
-# Functions that should be executed before the build script is run
-before_script:
-  - npm i -f
+image: node:16.5.0
 pages:
   stage: deploy
-  script:
-    - npm run build
-    - npm run 
-  artifacts:
+  cache:
+    key:
+      files:
+        - package-lock.json
+      prefix: npm
     paths:
-      # The folder that contains the files to be exposed at the Page URL
+      - node_modules/
+  script:
+    # needed for the vite build step only
+    - npm install
+    - npm run build
+    # the final contents for your page always have to be stored in the public folder
+    - cp -a dist/. public/
+  artifacts:
+    # artifact to make it visible for gitlab pages
+    paths:
       - public
   rules:
-    # This ensures that only pushes to the default branch will trigger
-    # a pages deploy
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
