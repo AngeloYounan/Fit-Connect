@@ -6,12 +6,11 @@ variables:
 
 before_script:
   - npm install 
-  - npm run build
 
 pages:
   stage: deploy
   script:
-  - npm run build -d public
+  - npm run serve
   artifacts:
     paths:
     - public
